@@ -5,8 +5,6 @@ autodetach on
 startup_message off 
 defscrollback 8192
 
-screen -t 1 irssi irssi
-
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{= ky}%-Lw%{=r}%20>%n %t%{= ky}%+Lw %{= ky}%-=| %{= kw}%M%d %c%{-} %{=r} ${USER}@%H "
