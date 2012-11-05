@@ -1,6 +1,6 @@
 shell -${SHELL}  # dash (-) is for login shells
 shelltitle ''
-vbell on
+vbell off
 autodetach on
 startup_message off 
 defscrollback 8192
