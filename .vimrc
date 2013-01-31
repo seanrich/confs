@@ -44,8 +44,7 @@ imap <c-s-cr> <esc>O
 nmap <c-s-cr> O<esc>    
 map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F11> :%!indent -i4 -npsl -di0 -br -nce -d0 -cli0 -npcs -nfc1 -nut 2>/dev/null<CR> 
-map <F10> :%s/
-//g<CR>
+map <F10> :%s///g<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 "--GUI Options----------------------------------------------------------------
