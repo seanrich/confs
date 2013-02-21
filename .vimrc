@@ -7,7 +7,7 @@ set ruler                               "show current position in file
 set wrap!                               "turn off word wrap
 set linebreak                           "wrap around words, not last fitting character
 set ignorecase smartcase                "have search ignore the case, unless specified
-set autochdir                           "change the active working directory for gvim to curr directory
+set paste                               "disable autoindent for paste
 set nocp
 set title
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.	"show bad whitespace
