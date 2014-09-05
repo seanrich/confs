@@ -7,7 +7,6 @@ set ruler                               "show current position in file
 set wrap!                               "turn off word wrap
 set linebreak                           "wrap around words, not last fitting character
 set ignorecase smartcase                "have search ignore the case, unless specified
-set paste                               "disable autoindent for paste
 set nocp
 set title
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.	"show bad whitespace
@@ -51,7 +50,6 @@ cmap w!! w !sudo tee % >/dev/null
 set guioptions-=T                       "remove the tool bar
 set guioptions-=m                       "remove the menu bar
 set gfn=Monospace\ 12                   "monospace fonts ftw!
-set mouse-=a                            "remove mouse visual mode
 
 "--TO HTML OPTIONS------------------------------------------------------------
 let html_use_css = 1                        "Use CSS instead of font tags
