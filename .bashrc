@@ -1,24 +1,45 @@
 export EDITOR=vim
 
-ls=`which ls`
-wc=`which wc`
-sed=`which sed`
-grep=`which grep`
+if [ $(type -fp tput) ]; then 
+    BLUE="\[\e[34;1m\]"
+    GREY="\[\e[30;1m\]"
+    GREEN="\[\e[32;1m\]"
+    RESET="\[\e[0m\]"
+else
+    BLUE="\[$(tput setaf 4)\]"
+    GREY="[\$(tput setaf 0)\]"
+    GREEN="\[$(tput setaf 2)\]"
+    RESET="\[$(tput sgr0)\]"
+fi
 
-PS1="\[\e[34;1m\]\u@\h \[\e[30;1m\](\[\e[32;1m\]\w\[\e[30;1m\])-\[\e[30;1m\](\[\e[32;1m\]\$(\$ls -1 | \$wc -l | \$sed 's: ::g') files, \$(\$ls -hal | \$grep -m 1 total | \$sed 's/total //')b\[\e[30;1m\])\$ \[\e[0m\]"
+function genpass {
+    < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32
+}
+
+function find_in_directory {
+    find "$1" -type f -print0 | xargs -0 grep "$2"
+}
+
+function findhere {
+    find_in_directory "." "$1"
+}
+
+function findall {
+    find_in_directory "/" "$1"
+}
+
+function prompt_display {
+    files=$(ls -1 | wc -l | sed 's: ::g')
+    size=$(ls -hal | grep -m 1 total | sed 's/total //')
+    echo "$files files, $size"
+}
+
+function set_bash_prompt {
+    PS1="${BLUE}\u@\h ${GREY}(${GREEN}\w${GREY})-(${GREEN}$(prompt_display)b${GREY})\$ ${RESET}"
+}
+
+PROMPT_COMMAND=set_bash_prompt
 
 alias ls='ls --color=auto'
 alias ll='ls -hal'
 alias makenew='make clean && make'
-
-function find_in_directory {
-  find "$1" -type f -print0 | xargs -0 grep "$2"
-}
-
-function findhere {
-  find_in_directory "." "$1"
-}
-
-function findall {
-  find_in_directory "/" "$1"
-}
