@@ -43,3 +43,4 @@ PROMPT_COMMAND=set_bash_prompt
 alias ls='ls --color=auto'
 alias ll='ls -hal'
 alias makenew='make clean && make'
+alias makekernel='sudo make -j32 && sudo make modules_install && if ! grep -qs /boot /proc/mounts; then sudo mount /dev/sda1 /boot; fi && sudo make install && sudo cp /boot/vmlinuz-* /boot/efi/boot/bootx64.efi && sudo rm /boot/*; sudo umount /boot'
