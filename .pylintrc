@@ -1,0 +1,6 @@
+[FORMAT]
+max-line-length=140
+good-names=a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+
+[MASTER]
+disable=C0114,C0115,C0116
