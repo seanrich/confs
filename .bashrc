@@ -16,18 +16,6 @@ function genpass {
     < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32
 }
 
-function find_in_directory {
-    find "$1" -type f -print0 | xargs -0 grep "$2"
-}
-
-function findhere {
-    find_in_directory "." "$1"
-}
-
-function findall {
-    find_in_directory "/" "$1"
-}
-
 function prompt_display {
     files=$(ls -1 | wc -l | sed 's: ::g')
     size=$(ls -hal | grep -m 1 total | sed 's/total //')
