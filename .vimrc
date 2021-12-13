@@ -11,6 +11,8 @@ set nocp
 set title
 set list listchars=tab:>.,trail:.,extends:#,nbsp:.	"show bad whitespace
 set incsearch
+set undofile
+set undodir=~/.vimundo/
 
 "--File Type Options----------------------------------------------------------
 set cindent tabstop=4 shiftwidth=4 expandtab smarttab ai si     "For basic editing assume C-Style
@@ -45,6 +47,9 @@ map <F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 map <F11> :%!indent -i4 -npsl -di0 -br -nce -d0 -cli0 -npcs -nfc1 -nut 2>/dev/null<CR> 
 map <F10> :%s///g<CR>
 cmap w!! w !sudo tee % >/dev/null
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap # X#
 
 "--GUI Options----------------------------------------------------------------
 set guioptions-=T                       "remove the tool bar
